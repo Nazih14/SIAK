@@ -10,7 +10,7 @@
     <icon density="xhdpi" src="platforms/android/res/drawable-xhdpi/ic_launcher.png" />
     <icon density="xxhdpi" src="platforms/android/res/drawable-xxhdpi/ic_launcher.png" />
     <icon density="xxxhdpi" src="platforms/android/res/drawable-xxxhdpi/ic_launcher.png" />
-    <name>Sibisma</name>
+    <name>SiAK</name>
     <description>
         Onsen UI project to create fancy user interfaces for hybrid mobile applications. It uses uses Apache Cordova to help you build an app that targets multiple mobile platforms: Android, iOS, Windows, and Windows Phone.
     </description>

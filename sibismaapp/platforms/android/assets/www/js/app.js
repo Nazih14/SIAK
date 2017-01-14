@@ -2,7 +2,7 @@
 
     'use strict';
     var module = angular.module('app', ['onsen', 'ngSanitize']);
-    var base_url = 'http://localhost/sibisma/sibismaapi/';
+    var base_url = 'http://sibismaapi.rumahcg.com/';
 
     module.controller('homeCtrl', function($scope, $http) {
         angular.element(document).ready(function() {
