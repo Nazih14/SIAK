@@ -58,7 +58,7 @@
  width:225px;                   /* text area width */
  text-align:center;
  padding:170px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
- margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+ margin:-115px 0px 0px -115px;  /* offset vertical: half of image height and text area height */
  /* offset horizontal: half of text area width */
 }
 .app2 {
@@ -102,32 +102,28 @@ input {
 .text-input--underbar {
   font: inherit;
   color: inherit;
-  background: #fff;
   border: none;
   line-height: normal;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   vertical-align: top;
   outline: none;
-  line-height: 1;
-  font-family: 'Lucida Grande', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 17px;
   letter-spacing: 0;
   line-height: 20px;
-  background-color: #f9f9f9;
+  background-color: #fff;
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: #004d40;
-  padding: 4px 8px 0 8px;
+  color: #e1f5fe;
+  padding: 14px 8px 0 8px;
   margin: 0;
   height: 31px;
-  font-weight: 400;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background-color: transparent;
+  background-color: #0277bd;
   border-bottom: 1px solid #0277bd;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -148,11 +144,21 @@ input {
   background-color: transparent;
 }
 .text-input--underbar:invalid {
-  border: 1px solid #ddd;
+  /*border: 1px solid #ddd;
   color: #333;
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid #348d89;
+  border-bottom: 1px solid #348d89;*/
+  color: #fff;
+  font-family: 'sans-serif' Arial;
+  display: block;
+  width: 100%;
+  margin: 10px 0px 0px 0px;
+  outline: none;
+  padding-top: 25px;
+  border: 1px solid #e1f5fe;
+  padding-bottom: 25px;
+  background-color: #0277bd;
 }
 
 .text-input {
@@ -597,20 +603,21 @@ button.btn-floating {
   cursor: default;
   pointer-events: none;
 }
-.image {
-  padding: 10px 0px 0px 0px;
+.images {
+  padding: 0px 0px 0px 0px;
   height: 60%;
   width: 60%;
+  text-align: center;
 }
 .image-mobile {
   width: 100px;
   height: 130px;
   border-radius: 50px;
-   border: 4px solid white;
+  border: 0px solid white;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
-   background-repeat: no-repeat;
-    background-position: 50%;
+  background-repeat: no-repeat;
+  background-position: 50%;
 }
 .img {
   padding: 0px;
@@ -627,7 +634,7 @@ button.btn-floating {
 }
 
 p {
-  color: #333;
+  color: #e1f5fe;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Arial', Helvetica, Arial, 'Lucida Grande', sans-serif;
@@ -654,7 +661,8 @@ small {
 }
 .note {
   font-size: 10px;
-  color: #fafafa;
+  color: #212121;
+  text-align: left;
 }
 .event {
   border-radius:4px;
@@ -755,6 +763,16 @@ small {
   font-size: 20px;
   padding: 10px;
 }
+.omb_login .omb_loginOr .omb_spanOr {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -0.6em;
+  margin-left: -1.5em;
+  background-color: white;
+  width: 3em;
+  text-align: center;
+}     
 
 /*------ buka halaman profile ------=======*/
 .pull-right {
@@ -767,19 +785,19 @@ small {
   text-align: center;
   color: white;
   padding: 0px 0 0 0;
-  margin-top: 10px;
+  margin-top: 0px;
   line-height: 1.4;
   background-color: transparent;
-  text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+  text-shadow: rgba(0, 0, 0, 0.14) 0px 1px 0px;
 }
 .profile-card2 {
   width: 100%;
   text-align: center;
   color: white;
   margin-top: 1px;
-  padding: 35px 0;
+  padding: 21px 0;
   line-height: 1.4;
-  background-color: #055d54;
+  background-color: #0d47a1;
   text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
 }
 
@@ -791,7 +809,7 @@ small {
 }
 
 .profile-name {
-  margin: 0px 0 0 0;
+  margin: -5px 0 0 0;
   font-weight: 600;
   font-size: 17px;
 }
@@ -888,17 +906,23 @@ small {
 }
 
 .profile-name {
-  font-size: 18px;
+  font-size: 17px;
   padding: 4px 0px 2px 10px;
 }
 
 .profile-email {
-  font-size: 15px;
+  font-size: 14px;
   opacity: 0.4;
   margin-top: -10px;
   padding: 4px 0px 2px 10px;
 }
-
+.sub {
+  color: #e1f5fe;
+  font-size: 19px;
+  opacity: 9;
+  margin-top: -30px;
+  padding: 4px 10px 2px 10px;
+}
 .switch--list-item {
   margin-right: 0px;
 }
@@ -1069,7 +1093,7 @@ img {
 
   .rating-num {
     position: relative;
-    top: 10px;
+    top: -5px;
     height: 24px;
     color: white;
     line-height: 24px;
@@ -1108,7 +1132,7 @@ img {
     opacity: 0.7;
   }
   .action-col2 {
-    background: #1e6d65;
+    background: #0d47a1;
     color: #fff;
     font-weight: 600;
     text-align: center;
@@ -1124,9 +1148,11 @@ img {
 
   .action-col2:active {
     opacity: 0.7;
+    border-bottom: 5px solid #ff9100;
   }
   .activebtn .ng-scope{
-    color: #fff;
+    color: #ffeb3b;
+    font-weight: 700;
     text-align: center;
   }
 
@@ -1567,22 +1593,71 @@ img {
       to { transform: scale(1) rotate(360deg);}
     }
 
+    .update-nag{
+      display: inline-block;
+      font-size: 14px;
+      text-align: left;
+      background-color: #fff;
+      height: 50px;
+      -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
+      box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+      margin-bottom: 10px;
+    }
 
+    .update-nag:hover{
+      cursor: pointer;
+      -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.4);
+      box-shadow: 0 1px 1px 0 rgba(0,0,0,.3);
+    }
+
+    .update-nag > .update-split{
+      background: #337ab7;
+      width: 33px;
+      float: left;
+      color: #fff!important;
+      height: 100%;
+      text-align: center;
+    }
+
+    .update-nag > .update-split > .ion{
+      position:relative;
+      top: calc(50% - 9px)!important; /* 50% - 3/4 of icon height */
+    }
+    .update-nag > .update-split.update-success{
+      background: #5cb85c!important;
+    }
+
+    .update-nag > .update-split.update-danger{
+      background: #d9534f!important;
+    }
+
+    .update-nag > .update-split.update-info{
+      background: #5bc0de!important;
+    }
+    .update-nag > .update-text{
+      line-height: 19px;
+      padding-top: 17px;
+      padding-left: 45px;
+      padding-right: 20px;
+    }
     /*=====================SiSKEMA-===================*/
     .login-form {
       text-align: center;
       width: 80%;
       margin: 10px auto 0;
     }
-
+    .with-full {
+      width: 100%;
+    }
     input[type=text], input[type=password] {
       font-family: 'sans-serif' Arial;
       display: block;
       width: 100%;
-      margin: 0 auto;
+      margin: 10px 0px 0px 0px;
       outline: none;
-      padding-top: 30px;
-      padding-bottom: 24px;
+      padding-top: 25px;
+      border: 1px solid #e1f5fe;
+      padding-bottom: 25px;
     }
 
     .login-button {
@@ -1685,7 +1760,7 @@ img {
 
     .lucent {
       opacity: 0.9;
-      color: #055d54;
+      color: #212121;
     }
 
 
@@ -1785,4 +1860,4 @@ img {
     }*/
 
 
-/*------ custom ------------------*/
+    /*------ custom ------------------*/

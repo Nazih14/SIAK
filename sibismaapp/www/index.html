@@ -25,7 +25,7 @@
     <!--<script src="cordova.js"></script>--> 
 
     <!-- - App init -->
-    <title>Sibisma App Mobile</title>
+    <title>Siak App Mobile</title>
 
 </head>
 
@@ -108,56 +108,64 @@
 <!-- Halaman Login -->
 <ons-template id="login.html">
     <div ng-controller="LoginCtrl"> 
-        <ons-page sliding-menu-ignore="true" modifier="full_bg" style="  background: #fff;">
+        <ons-page sliding-menu-ignore="true" modifier="full_bg" style="  
+        background: #00c6ff; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        ">
 
-        <div class="profile-card2" style=" background: url(img/back2.jpg) no-repeat; 
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;">
-               <img src="img/bam3.png" class="image"><br/>
-               <small>
-                   Akses Login SIAK Mahasiswa STTT-NF</small>
-               </div>
-               <form name="login" class="login-form">
 
-                <ons-row>
-                    <ons-col class="person-name">
-                        <input type="text" required class="text-input--underbar" ng-model="user.UserId" placeholder="Nim Mahasiswa" style="width:100%;">
-                    </ons-col>
-                </ons-row>
+        <div class="profile-card">
 
-                <ons-row>
-                    <ons-col class="person-name">
-                        <input type="password" required class="text-input--underbar" ng-model="user.UserPassword" placeholder="Password" style="width:100%;">
-                    </ons-col>
-                </ons-row>
+            <img src="img/siak.png" class="images">
 
-                <div class="content-padded">
-                    <center>
-                        <div ng-show="hiddenAnimate">
-                            <div class="overlay"></div>
-                            <div class="spinner">
-                                <div class="double-bounce1"></div>
-                                <div class="double-bounce2"></div>
-                            </div>
-                            <div class="please-wait">Please Wait...</div>
+            <div class="sub"> ------{ Akses Login Siak }------</div>
+
+
+        </div>
+        <form name="login" class="login-form">
+
+            <ons-row>
+                <ons-col class="person-name">
+                    <input type="text" required class="text-input--underbar width-full" ng-model="user.UserId" placeholder="Nim Mahasiswa" style="width:100%;">
+                </ons-col>
+            </ons-row>
+
+            <ons-row>
+                <ons-col class="person-name">
+                    <input type="password" required class="text-input--underbar width-full" ng-model="user.UserPassword" placeholder="Password" style="width:100%;">
+                </ons-col>
+            </ons-row>
+
+            <div class="content-padded">
+                <center>
+                    <div ng-show="hiddenAnimate">
+                        <div class="overlay"></div>
+                        <div class="spinner">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
                         </div>
+                        <div class="please-wait">Please Wait...</div>
+                    </div>
 
-                        <span ng-show="loginState">
-                            <small class="notification"><i>Nim and password incorrect</i></small>
-                        </span>
-                        <span ng-show="errorState">
-                            <small class="notification"><i>Please check your connection</i></small>
-                        </span>
-                    </center>
-                </div>
+                    <span ng-show="loginState">
+                        <small class="notification"><i>Nim and password incorrect</i></small>
+                    </span>
+                    <span ng-show="errorState">
+                        <small class="notification"><i>Please check your connection</i></small>
+                    </span>
+                </center>
+            </div>
 
-                <ons-button modifier="large" class="button button--large--cta" ng-disabled="login.$invalid" ng-click="SignIn(user)" style="width:100%; margin-left:0px; margin-top:10px;"><i class="ion-android-lock"></i> Log In
-                </ons-button>
+            <ons-button modifier="large" class="button button--large--cta" ng-disabled="login.$invalid" ng-click="SignIn(user)" style="width:100%; margin-left:0px; margin-top:10px;"><i class="ion-android-lock"></i> Log In
+            </ons-button>
 
-                <p>Sistem Informasi Biaya Studi Mahasiswa STTT-NF</p>
-            </form>
+            <p class="">Sistem Informasi Keuangan Mahasiswa STTT-NF</p>
+            <div class="update-nag">
+                <div class="update-split update-info"><i class="ion ion-home"></i></div>
+                <div class="update-text">Contact Us: <a href="mailto:info@nurulfikri.ac.id">info@nurulfikri.ac.id</a> </div>
+            </div>
+        </form>
 <!-- 
                 <ons-bottom-toolbar>
                   <div class="brown">@CopyRight - STTT-NF. All rights reserved</div>
@@ -207,7 +215,7 @@
 
 <!--halaman pilih profile -->
 <ons-template id="page.html">
-    <ons-page modifier="shop-details" ng-controller="pageCtrl" style="background:#eee;">
+    <ons-page modifier="shop-details" ng-controller="pageCtrl" style="background:#ddd;">
         <ons-toolbar fixed-style modifier="transparent">
             <div class="left">
                 <ons-toolbar-button onclick="myNavigator.pushPage('start.html', {animation: 'fade'})">
@@ -220,8 +228,8 @@
         <div class="profile-card2">
             <img ng-src="{{foto}}" class="image-mobile">
             <div class="profile-name"> {{name}} </div>
-            <div class="profile-email"> {{id}}</div>
-            <div class="profile-email"> {{pob}}, {{dob}}</div>
+            <div class="profile-desc"> {{id}}</div>
+            <div class="profile-id"> {{pob}}, {{dob}}</div>
             <div class="rating">
                 <div class="rating-num">
                     Status: {{status}}
@@ -403,13 +411,9 @@
 </div>
 
 </ons-scroller>
-
-
 </ons-carousel-item>
 
 <ons-carousel-item>
-
-
    <ons-scroller style="height: 300px; width: 100%">
        <div class="card-3">
            <ons-row>
@@ -535,12 +539,8 @@
 
 
 <ons-carousel-item>
-
-
    <ons-scroller style="height: 285px; width: 100%">
        <div class="card-3">
-
-
         <ons-row>
             <ons-col width="5px"></ons-col>
             <ons-col width="40px">
@@ -586,7 +586,6 @@
             </ons-col>
             <ons-col width="45px"></ons-col>
         </ons-row>
-
     </div>
 
 </ons-scroller>
@@ -605,185 +604,167 @@
 
 <!--halaman pilih tahun -->
 <ons-template id="tahun.html">
-    <ons-page modifier="shop-details" ng-controller="pageCtrl" style="background:#eee;">
+    <ons-page modifier="shop-details" ng-controller="pageCtrl" style="background:#ddd;">
 
-        <ons-toolbar style="background: #1e6d65; border-bottom: 1px solid #1e6d65;">
+        <ons-toolbar style="background: #01166c;">
             <div class="left">
-                <ons-toolbar-button onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+                <ons-toolbar-button onclick="myNavigator.pushPage('page.html', {animation: 'fade'})">
                     <font color="#fff"><ons-icon icon="fa-chevron-left" fixed-width="false"></ons-icon> SibismaApp</font>
                 </ons-toolbar-button>
             </div>
             <!--<div class="left"><ons-back-button ons-if-platform="ios">Back</ons-back-button></div>-->
         </ons-toolbar>
-       <!--  <div class="profile-card2">
-                <img src="{{foto}}" class="img-circle">
-                    <div class="profile-name"> {{name}} </div>
-                    <div class="profile-email"> {{id}}</div>
-                    <div class="profile-email"> {{pob}}, {{dob}}</div>
-                    <div class="rating">
-                        <div class="rating-num">
-                            Status: {{status}}
-                        </div>
+
+        <br><br><p></p>
+        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+            <ons-row>
+                <ons-col width="45px">
+                    <img src="img/calendar.png" class="img">
+                </ons-col>
+                <ons-col>
+                    <div class="location">
+                        Tahun Akademik
                     </div>
+                    <div class="name">
+                        20121
+                    </div>
+                </ons-col>
+            </ons-row>
+        </div>
 
-                </div> -->
-           <br><br><p></p>
-            <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                <ons-row>
-                    <ons-col width="45px">
-                        <img src="img/calendar.png" class="img">
-                    </ons-col>
-                    <ons-col>
-                        <div class="location">
-                            Tahun Akademik
-                        </div>
-                        <div class="name">
-                            20121
-                        </div>
-                    </ons-col>
-                </ons-row>
-            </div>
+        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+            <ons-row>
+                <ons-col width="45px">
+                    <img src="img/calendar.png" class="img">
+                </ons-col>
+                <ons-col>
+                    <div class="location">
+                        Tahun Akademik
+                    </div>
+                    <div class="name">
+                        20122
+                    </div>
+                </ons-col>
+            </ons-row>
+        </div>
 
-            <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                <ons-row>
-                    <ons-col width="45px">
-                        <img src="img/calendar.png" class="img">
-                    </ons-col>
-                    <ons-col>
-                        <div class="location">
-                            Tahun Akademik
-                        </div>
-                        <div class="name">
-                            20122
-                        </div>
-                    </ons-col>
-                </ons-row>
-            </div>
+        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+            <ons-row>
+                <ons-col width="45px">
+                    <img src="img/calendar.png" class="img">
+                </ons-col>
+                <ons-col>
+                    <div class="location">
+                        Tahun Akademik
+                    </div>
+                    <div class="name">
+                        20131
+                    </div>
+                </ons-col>
+            </ons-row>
+        </div>
 
-            <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                <ons-row>
-                    <ons-col width="45px">
-                        <img src="img/calendar.png" class="img">
-                    </ons-col>
-                    <ons-col>
-                        <div class="location">
-                            Tahun Akademik
-                        </div>
-                        <div class="name">
-                            20131
-                        </div>
-                    </ons-col>
-                </ons-row>
-            </div>
+        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+            <ons-row>
+                <ons-col width="45px">
+                    <img src="img/calendar.png" class="img">
+                </ons-col>
+                <ons-col>
+                    <div class="location">
+                        Tahun Akademik
+                    </div>
+                    <div class="name">
+                        20132
+                    </div>
+                </ons-col>
+            </ons-row>
+        </div>
 
-            <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                <ons-row>
-                    <ons-col width="45px">
-                        <img src="img/calendar.png" class="img">
-                    </ons-col>
-                    <ons-col>
-                        <div class="location">
-                            Tahun Akademik
-                        </div>
-                        <div class="name">
-                            20132
-                        </div>
-                    </ons-col>
-                </ons-row>
-            </div>
+        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+            <ons-row>
+                <ons-col width="45px">
+                    <img src="img/calendar.png" class="img">
+                </ons-col>
+                <ons-col>
+                    <div class="location">
+                        Tahun Akademik
+                    </div>
+                    <div class="name">
+                        20141
+                    </div>
+                </ons-col>
+            </ons-row>
+        </div>
 
-            <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                <ons-row>
-                    <ons-col width="45px">
-                        <img src="img/calendar.png" class="img">
-                    </ons-col>
-                    <ons-col>
-                        <div class="location">
-                            Tahun Akademik
-                        </div>
-                        <div class="name">
-                            20141
-                        </div>
-                    </ons-col>
-                </ons-row>
-            </div>
+        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+            <ons-row>
+                <ons-col width="45px">
+                    <img src="img/calendar.png" class="img">
+                </ons-col>
+                <ons-col>
+                    <div class="location">
+                        Tahun Akademik
+                    </div>
+                    <div class="name">
+                        20142
+                    </div>
+                </ons-col>
+            </ons-row>
+        </div>
 
-            <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                <ons-row>
-                    <ons-col width="45px">
-                        <img src="img/calendar.png" class="img">
-                    </ons-col>
-                    <ons-col>
-                        <div class="location">
-                            Tahun Akademik
-                        </div>
-                        <div class="name">
-                            20142
-                        </div>
-                    </ons-col>
-                </ons-row>
-            </div>
+        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+            <ons-row>
+                <ons-col width="45px">
+                    <img src="img/calendar.png" class="img">
+                </ons-col>
+                <ons-col>
+                    <div class="location">
+                        Tahun Akademik
+                    </div>
+                    <div class="name">
+                        20151
+                    </div>
+                </ons-col>
+            </ons-row>
+        </div>
 
-             <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                <ons-row>
-                    <ons-col width="45px">
-                        <img src="img/calendar.png" class="img">
-                    </ons-col>
-                    <ons-col>
-                        <div class="location">
-                            Tahun Akademik
-                        </div>
-                        <div class="name">
-                            20151
-                        </div>
-                    </ons-col>
-                </ons-row>
-            </div>
+        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+            <ons-row>
+                <ons-col width="45px">
+                    <img src="img/calendar.png" class="img">
+                </ons-col>
+                <ons-col>
+                    <div class="location">
+                        Tahun Akademik
+                    </div>
+                    <div class="name">
+                        20152
+                    </div>
+                </ons-col>
+            </ons-row>
+        </div>
 
-            <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                <ons-row>
-                    <ons-col width="45px">
-                        <img src="img/calendar.png" class="img">
-                    </ons-col>
-                    <ons-col>
-                        <div class="location">
-                            Tahun Akademik
-                        </div>
-                        <div class="name">
-                            20152
-                        </div>
-                    </ons-col>
-                </ons-row>
-            </div>
+    </ons-page>
+</ons-template>
 
-        </ons-page>
-    </ons-template>
+<!--halaman pilih tahun -->
 
-    <!--halaman pilih tahun -->
+<!--halaman pilih keuangan -->
 
-    <!--halaman pilih keuangan -->
+<ons-template id="managePort.html">
+    <ons-dialog var="dlg" cancelable>
+        <div class="alert-dialog-title alert-dialog-title--android">
+            Apakah anda ingin keluar?
+             <button class="alert-dialog-button alert-dialog-button--one" ng-click=" logout(); menu.setMainPage('dashboard.html', {closeMenu: true});">Ya</button>
+        </div>
 
-    <ons-template id="managePort.html">
-        <ons-dialog var="dlg" cancelable>
-            <div class="alert-dialog-title alert-dialog-title--android">
-                Peringatan
-            </div>
+  </ons-dialog> 
+</ons-template>
 
-            <div class="alert-dialog-content alert-dialog-content--android">
-               Apakah anda ingin keluar?
-           </div>
-
-           <div class="alert-dialog-footer alert-dialog-footer--one" ng-controller="listCtrl">
-              <button class="alert-dialog-button alert-dialog-button--one" ng-click=" logout(); menu.setMainPage('dashboard.html', {closeMenu: true});">Ya</button>
-          </div>
-
-      </ons-dialog> 
-  </ons-template>
-
-  <ons-template id="bipot.html">
+<ons-template id="bipot.html">
     <ons-page modifier="shop-details" style="background:#eee;">
 
-        <ons-toolbar style="background: #1e6d65; border-bottom: 1px solid #1e6d65;">
+        <ons-toolbar style="background: #01166c; border: 1px solid #01166c;">
             <div class="left">
                 <ons-toolbar-button onclick="myNavigator.pushPage('tahun.html', {animation: 'fade'})">
                     <font color="#fff"><ons-icon icon="fa-chevron-left" fixed-width="false"></ons-icon> SibismaApp</font>
@@ -795,30 +776,39 @@
                 </div>
             </div>
         </ons-toolbar>
+        <div class="profile-card2">
+        </div>
+        <ons-list>
+            <ons-list-item style="background-color: #01166c;">
+                <ons-row class="action" var="tb">
+                    <ons-col class="action-col2">
+                        <ons-toolbar-button class="ng-scope"  id="btn_0" ng-click="abc.setActiveCarouselItemIndex(0)">
+                         <small class="green">BIPOT</small>
+                     </ons-toolbar-button>
+                 </ons-col>
 
-        <ons-list style="border-top: none">
-            <ons-list-item style="line-height: 1; padding: 0;">
-                <ons-row class="action">
-                    <ons-col class="action-col solid">
-                        <div class="action-label">BIPOT</div>
-                    </ons-col>
+                 <ons-col class="action-col2">
+                     <ons-toolbar-button class="ng-scope" id="btn_1" ng-click="abc.setActiveCarouselItemIndex(1)">
+                         <small class="green">PEMBAYARAN</small>
+                     </ons-toolbar-button>
+                 </ons-col>
 
-                    <ons-col class="action-col" onclick="myNavigator.pushPage('cash.html', {animation: 'fade'})">
-                        <div class="action-label">PEMBAYARAN</div>
-                    </ons-col>
+             </ons-row>
+         </ons-list-item>
+     </ons-list>
 
-                </ons-row>
-            </ons-list-item>
-        </ons-list>
 
-        <div class="card-2">
+
+     <ons-carousel style="height: 850px; width: 100%" swipeable overscrollable auto-scroll var="abc" ng-controller="slide">
+
+       <ons-carousel-item>
+           <div class="card-2">
             <div class="prop-desc">
-               <ons-icon icon="fa-volume-up"></ons-icon>
-               Informasi Biaya dan Potongan
-           </div>
-       </div>
-
-       <ons-scroller style="height: 490px; width: 100%">
+             <ons-icon icon="fa-volume-up"></ons-icon>
+             Informasi Biaya dan Potongan
+         </div>
+     </div>
+     <ons-scroller style="height:850px; width: 100%">
 
         <div class="card-4">
             <ons-col class="plan-right">
@@ -924,108 +914,75 @@
 </div>
 
 </ons-scroller>
+</ons-carousel-item>
 
-</ons-page>
-</ons-template>
-<!--Tutup halaman Keuangan -->
-
-
-<!--halaman pilih keuangan -->
-<ons-template id="cash.html">
-    <ons-page modifier="shop-details" style="background:#eee;">
-        <ons-toolbar style="background: #1e6d65; border-bottom: 1px solid #1e6d65;">
-            <div class="left">
-                <ons-toolbar-button onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                    <font color="#fff"><ons-icon icon="fa-chevron-left" fixed-width="false"></ons-icon> SibismaApp</font>
-                </ons-toolbar-button>
-            </div>
-            <div class="right">
-                <div ng-controller='portfoliosController'>
-                    <ons-toolbar-button><ons-icon icon="fa-sign-out" ng-click="show()" style="color: #fff"></ons-icon></ons-toolbar-button>
-                </div>
-            </div>
-        </ons-toolbar>
-
-        <ons-list style="border-top: none">
-            <ons-list-item style="line-height: 1; padding: 0;">
-                <ons-row class="action">
-                    <ons-col class="action-col" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-                        <div class="action-label">BIPOT</div>
-                    </ons-col>
-
-                    <ons-col class="action-col solid">
-                        <div class="action-label">PEMBAYARAN</div>
-                    </ons-col>
-
-                </ons-row>
-            </ons-list-item>
-        </ons-list>
-        <div class="card-2">
-            <div class="prop-desc">
-                <ons-icon icon="fa-volume-up"></ons-icon>
-                Informasi Pembayaran dan Penarikan
-            </div>
+<ons-carousel-item>
+    <div class="card-2">
+        <div class="prop-desc">
+            <ons-icon icon="fa-volume-up"></ons-icon>
+            Informasi Pembayaran dan Penarikan
         </div>
-
-        <ons-scroller style="height: 490px; width: 100%">
-           <div class="card-4">
-               <ons-col>
-                <div class="timeline-date">No 1</div>
-                <div class="timline-from">
-                  <span class="timeline-name">20152</span>
-                  <span class="timeline-id"># Tahun Akademik</span>
-              </div>
-          </ons-col>
-          <p></p>
-          <ons-col class="plan-right">
-            <div class="plan-name">Tanggal : 22-08-2015</div>
-
-            <div class="plan-info">
-                <ons-list-item>
-                    <ons-icon icon="fa-list-ol" size="15px"></ons-icon>
-                    Nomor Bukti
-                    <span class="list-item-note lucent"> 2015-00608 </span>
-                </ons-list-item>
-                <ons-list-item>
-                    <ons-icon icon="fa-keyboard-o" size="15px"></ons-icon>
-                    Nomor Rekening
-                    <span class="list-item-note lucent"> 0174 751 711 </span>
-                </ons-list-item>
-                <ons-list-item>
-                    <ons-icon icon="fa-bank" size="15px"></ons-icon>
-                    Bank
-                    <span class="list-item-note lucent"> BNI </span>
-                </ons-list-item>
-                <ons-list-item>
-                    <ons-icon icon="fa-barcode" size="15px"></ons-icon>
-                    Bukti Setoran
-                    <span class="list-item-note lucent"> CASH </span>
-                </ons-list-item>
-                <ons-list-item>
-                    <ons-icon icon="fa-plus-square" size="15px"></ons-icon>
-                    Jumlah
-                    <span class="list-item-note lucent"><div class="notification"> Rp.6.500.000,- </div></span>
-                </ons-list-item>
-                <ons-list-item>
-                    <ons-icon icon="fa-file-text-o" size="15px"></ons-icon>
-                    Keterangan
-                    <span class="list-item-note lucent"> BOP smt 8 </span>
-                </ons-list-item>
-            </div>
-        </ons-col>
-
     </div>
 
-    <div class="card-4">
-       <ons-col>
-        <div class="timeline-date">No 2</div>
-        <div class="timline-from">
-          <span class="timeline-name">20152</span>
-          <span class="timeline-id"># Tahun Akademik</span>
-      </div>
-  </ons-col>
-  <p></p>
-  <ons-col class="plan-right">
+    <ons-scroller style="height: 850px; width: 100%">
+       <div class="card-4">
+           <ons-col>
+            <div class="timeline-date">No 1</div>
+            <div class="timline-from">
+              <span class="timeline-name">20152</span>
+              <span class="timeline-id"># Tahun Akademik</span>
+          </div>
+      </ons-col>
+      <p></p>
+      <ons-col class="plan-right">
+        <div class="plan-name">Tanggal : 22-08-2015</div>
+
+        <div class="plan-info">
+            <ons-list-item>
+                <ons-icon icon="fa-list-ol" size="15px"></ons-icon>
+                Nomor Bukti
+                <span class="list-item-note lucent"> 2015-00608 </span>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-icon icon="fa-keyboard-o" size="15px"></ons-icon>
+                Nomor Rekening
+                <span class="list-item-note lucent"> 0174 751 711 </span>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-icon icon="fa-bank" size="15px"></ons-icon>
+                Bank
+                <span class="list-item-note lucent"> BNI </span>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-icon icon="fa-barcode" size="15px"></ons-icon>
+                Bukti Setoran
+                <span class="list-item-note lucent"> CASH </span>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-icon icon="fa-plus-square" size="15px"></ons-icon>
+                Jumlah
+                <span class="list-item-note lucent"><div class="notification"> Rp.6.500.000,- </div></span>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-icon icon="fa-file-text-o" size="15px"></ons-icon>
+                Keterangan
+                <span class="list-item-note lucent"> BOP smt 8 </span>
+            </ons-list-item>
+        </div>
+    </ons-col>
+
+</div>
+
+<div class="card-4">
+   <ons-col>
+    <div class="timeline-date">No 2</div>
+    <div class="timline-from">
+      <span class="timeline-name">20152</span>
+      <span class="timeline-id"># Tahun Akademik</span>
+  </div>
+</ons-col>
+<p></p>
+<ons-col class="plan-right">
     <div class="plan-name">Tanggal : 23-08-2015</div>
 
     <div class="plan-info">
@@ -1064,18 +1021,18 @@
 </div>
 
 </ons-scroller>
+</ons-carousel-item>
+
+</ons-carousel>
 
 </ons-page>
 </ons-template>
 <!--Tutup halaman Keuangan -->
 
 
-
-
-
 <ons-template id="contact.html">
     <ons-page modifier="shop-details">
-        <ons-toolbar style="background: #1e6d65; border-bottom: 0px;">
+        <ons-toolbar style="background: #01166c; border-bottom: 0px;">
             <div class="left">
                 <ons-toolbar-button ng-click="menu.toggle()">
                     <font color="#fff"> <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon></font>
@@ -1087,7 +1044,7 @@
         <div class="card" style="margin-top: 10px;">
 
             <div class="google-maps">
-                <iframe src="https://www.google.com/maps/d/embed?mid=zNaHOzcOZhfM.kocj4SCYOYsw"></iframe>
+               <iframe src="https://www.google.com/maps/d/embed?mid=1L6KFdZi5VHZPrzPXpTKnJNuEBVY" width="640" height="480"></iframe>
             </div>
 
         </div>
@@ -1208,7 +1165,7 @@
 
 <ons-template id="about.html">
     <ons-page>
-        <ons-toolbar style="background: #1e6d65; border-bottom: 0px;">
+        <ons-toolbar style="background: #01166c; border-bottom: 0px;">
             <div class="left">
                 <ons-toolbar-button ng-click="menu.toggle()">
                     <font color="#fff"> <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon></font>
