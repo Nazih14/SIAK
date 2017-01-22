@@ -40,7 +40,18 @@
     swipable="false">
 </ons-sliding-menu>
 
+<ons-template id="managePort.html">
+    <ons-dialog var="dlg" cancelable>
+        <div class="alert-dialog-title alert-dialog-title--android">
+            Apakah anda ingin keluar?
+            <ons-list-item class="bottom-menu-item" ng-click="logout(); menu.setMainPage('dashboard.html', {closeMenu: true});">
+                <span class="fa fa-sign-in"></span>
+                Ya
+            </ons-list-item>
+        </div>
 
+    </ons-dialog> 
+</ons-template>
 <!-- Sidebar Menu -->
 <ons-template id="menu.html">
     <ons-page modifier="menu-page">
@@ -241,17 +252,17 @@
                 <ons-row class="action" var="tb">
                     <ons-col class="action-col2">
                         <ons-toolbar-button class="ng-scope"  id="btn_0" ng-click="abc.setActiveCarouselItemIndex(0)">
-                         <small class="green">PRIBADI</small>
-                     </ons-toolbar-button>
-                 </ons-col>
+                           <small class="green">PRIBADI</small>
+                       </ons-toolbar-button>
+                   </ons-col>
 
-                 <ons-col class="action-col2">
-                     <ons-toolbar-button class="ng-scope" id="btn_1" ng-click="abc.setActiveCarouselItemIndex(1)">
-                         <small class="green">ALAMAT</small>
-                     </ons-toolbar-button>
-                 </ons-col>
+                   <ons-col class="action-col2">
+                       <ons-toolbar-button class="ng-scope" id="btn_1" ng-click="abc.setActiveCarouselItemIndex(1)">
+                           <small class="green">ALAMAT</small>
+                       </ons-toolbar-button>
+                   </ons-col>
 
-                 <ons-col class="action-col2">
+                   <ons-col class="action-col2">
                     <ons-toolbar-button class="ng-scope" id="btn_2" ng-click="abc.setActiveCarouselItemIndex(2)">
                       <small class="green"> ORTU</small>
                   </ons-toolbar-button>
@@ -267,8 +278,8 @@
       <ons-carousel-item>
 
         <ons-scroller style="height: 300px; width: 100%">
-           <div class="card-3">
-               <ons-row>
+         <div class="card-3">
+             <ons-row>
                 <ons-col width="5px"></ons-col>
                 <ons-col width="40px">
                     <i class="fa fa-tags"></i>
@@ -376,9 +387,9 @@
             <ons-row>
                 <ons-col width="5px"></ons-col>
                 <ons-col width="40px">
-                   <i class="ion-transgender"></i>
-               </ons-col>
-               <ons-col>
+                 <i class="ion-transgender"></i>
+             </ons-col>
+             <ons-col>
                 <div class="name">
                     Jenis Kelamin
                 </div>
@@ -391,8 +402,8 @@
         <p></p>
 
         <ons-row>
-           <ons-col width="5px"></ons-col>
-           <ons-col width="40px">
+         <ons-col width="5px"></ons-col>
+         <ons-col width="40px">
             <i class="ion-ios-heart"></i>
         </ons-col>
         <ons-col>
@@ -414,9 +425,9 @@
 </ons-carousel-item>
 
 <ons-carousel-item>
-   <ons-scroller style="height: 300px; width: 100%">
-       <div class="card-3">
-           <ons-row>
+ <ons-scroller style="height: 300px; width: 100%">
+     <div class="card-3">
+         <ons-row>
             <ons-col width="5px"></ons-col>
             <ons-col width="40px">
                 <i class="fa fa-envelope"></i>
@@ -466,8 +477,8 @@
         <p></p>
 
         <ons-row>
-           <ons-col width="5px"></ons-col>
-           <ons-col width="40px">
+         <ons-col width="5px"></ons-col>
+         <ons-col width="40px">
             <i class="fa fa-building"></i>
         </ons-col>
         <ons-col>
@@ -539,8 +550,8 @@
 
 
 <ons-carousel-item>
-   <ons-scroller style="height: 285px; width: 100%">
-       <div class="card-3">
+ <ons-scroller style="height: 285px; width: 100%">
+     <div class="card-3">
         <ons-row>
             <ons-col width="5px"></ons-col>
             <ons-col width="40px">
@@ -609,7 +620,7 @@
         <ons-toolbar style="background: #01166c;">
             <div class="left">
                 <ons-toolbar-button onclick="myNavigator.pushPage('page.html', {animation: 'fade'})">
-                    <font color="#fff"><ons-icon icon="fa-chevron-left" fixed-width="false"></ons-icon> SibismaApp</font>
+                    <font color="#fff"><ons-icon icon="fa-chevron-left" fixed-width="false"></ons-icon> Siak-App</font>
                 </ons-toolbar-button>
             </div>
             <!--<div class="left"><ons-back-button ons-if-platform="ios">Back</ons-back-button></div>-->
@@ -751,64 +762,63 @@
 
 <!--halaman pilih keuangan -->
 
-<ons-template id="managePort.html">
-    <ons-dialog var="dlg" cancelable>
-        <div class="alert-dialog-title alert-dialog-title--android">
-            Apakah anda ingin keluar?
-             <button class="alert-dialog-button alert-dialog-button--one" ng-click=" logout(); menu.setMainPage('dashboard.html', {closeMenu: true});">Ya</button>
-        </div>
-
-  </ons-dialog> 
-</ons-template>
-
 <ons-template id="bipot.html">
     <ons-page modifier="shop-details" style="background:#eee;">
 
         <ons-toolbar style="background: #01166c; border: 1px solid #01166c;">
             <div class="left">
                 <ons-toolbar-button onclick="myNavigator.pushPage('tahun.html', {animation: 'fade'})">
-                    <font color="#fff"><ons-icon icon="fa-chevron-left" fixed-width="false"></ons-icon> SibismaApp</font>
+                    <font color="#fff"><ons-icon icon="fa-chevron-left" fixed-width="false"></ons-icon> Siak-App</font>
                 </ons-toolbar-button>
+
             </div>
-            <div class="right">
-                <div ng-controller='portfoliosController'>
-                    <ons-toolbar-button><ons-icon icon="fa-sign-out" ng-click="show()" style="color: #fff"></ons-icon></ons-toolbar-button>
-                </div>
-            </div>
-        </ons-toolbar>
-        <div class="profile-card2">
+            <div class="center">
+
+           </div>
+           <div class="right">
+           <ons-toolbar-button ng-click="menu.toggle()">
+                    <font color="#fff"> <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon></font>
+                </ons-toolbar-button>
+            <!-- <div ng-controller='portfoliosController'>
+                <ons-toolbar-button>
+                    <ons-icon icon="fa-sign-out" ng-click="show()" style="color: #fff"></ons-icon>
+                </ons-toolbar-button>
+            </div> -->
         </div>
-        <ons-list>
-            <ons-list-item style="background-color: #01166c;">
-                <ons-row class="action" var="tb">
-                    <ons-col class="action-col2">
-                        <ons-toolbar-button class="ng-scope"  id="btn_0" ng-click="abc.setActiveCarouselItemIndex(0)">
-                         <small class="green">BIPOT</small>
-                     </ons-toolbar-button>
-                 </ons-col>
+    </ons-toolbar>
+    <div class="profile-card2">
+    </div>
+    <ons-list>
+        <ons-list-item style="background-color: #01166c;">
+            <ons-row class="action" var="tb">
+                <ons-col class="action-col2">
+                    <ons-toolbar-button class="ng-scope"  id="btn_0" ng-click="abc.setActiveCarouselItemIndex(0)">
+                       <small class="green">BIPOT</small>
+                   </ons-toolbar-button>
+               </ons-col>
 
-                 <ons-col class="action-col2">
-                     <ons-toolbar-button class="ng-scope" id="btn_1" ng-click="abc.setActiveCarouselItemIndex(1)">
-                         <small class="green">PEMBAYARAN</small>
-                     </ons-toolbar-button>
-                 </ons-col>
+               <ons-col class="action-col2">
+                   <ons-toolbar-button class="ng-scope" id="btn_1" ng-click="abc.setActiveCarouselItemIndex(1)">
+                       <small class="green">PEMBAYARAN</small>
+                   </ons-toolbar-button>
+               </ons-col>
 
-             </ons-row>
-         </ons-list-item>
-     </ons-list>
+           </ons-row>
+       </ons-list-item>
+   </ons-list>
 
 
 
-     <ons-carousel style="height: 850px; width: 100%" swipeable overscrollable auto-scroll var="abc" ng-controller="slide">
+   <ons-carousel style="height: 850px; width: 100%" swipeable overscrollable auto-scroll var="abc" ng-controller="slide">
 
-       <ons-carousel-item>
-           <div class="card-2">
+     <ons-carousel-item>
+         <div class="card-2">
             <div class="prop-desc">
-             <ons-icon icon="fa-volume-up"></ons-icon>
-             Informasi Biaya dan Potongan
-         </div>
-     </div>
-     <ons-scroller style="height:850px; width: 100%">
+               <ons-icon icon="fa-volume-up"></ons-icon>
+               Informasi Biaya dan Potongan
+           </div>
+       </div>
+       <ons-scroller style="height:850px; width: 100%">
 
         <div class="card-4">
             <ons-col class="plan-right">
@@ -859,7 +869,7 @@
 
 
     <div class="card-4">
-       <ons-col>
+     <ons-col>
         <div class="timeline-date">No 2</div>
         <div class="timline-from">
           <span class="timeline-name">20152</span>
@@ -906,7 +916,7 @@
 </div>
 
 <div class="card-4">
-   <ons-list-item>
+ <ons-list-item>
     <ons-icon icon="fa-money" size="15px"></ons-icon>
     Sisa
     <span class="list-item-note lucent">Rp.0,-</span>
@@ -925,8 +935,8 @@
     </div>
 
     <ons-scroller style="height: 850px; width: 100%">
-       <div class="card-4">
-           <ons-col>
+     <div class="card-4">
+         <ons-col>
             <div class="timeline-date">No 1</div>
             <div class="timline-from">
               <span class="timeline-name">20152</span>
@@ -974,7 +984,7 @@
 </div>
 
 <div class="card-4">
-   <ons-col>
+ <ons-col>
     <div class="timeline-date">No 2</div>
     <div class="timline-from">
       <span class="timeline-name">20152</span>
@@ -1044,13 +1054,13 @@
         <div class="card" style="margin-top: 10px;">
 
             <div class="google-maps">
-               <iframe src="https://www.google.com/maps/d/embed?mid=1L6KFdZi5VHZPrzPXpTKnJNuEBVY" width="640" height="480"></iframe>
-            </div>
+             <iframe src="https://www.google.com/maps/d/embed?mid=1L6KFdZi5VHZPrzPXpTKnJNuEBVY" width="640" height="480"></iframe>
+         </div>
 
-        </div>
-        <ons-scroller style="height: 250px; width: 100%">
+     </div>
+     <ons-scroller style="height: 250px; width: 100%">
 
-           <div class="card-3">
+         <div class="card-3">
             <ons-row>
                 <ons-col width="45px">
                     <span class="ion-android-call" style="font-size: 30px;"></span> 
@@ -1134,22 +1144,22 @@
                     </a>
                 </ons-col>
                 <ons-col width="58px">
-                   <a href="#" onclick="window.open('http://twitter.com/STTTerpaduNF', '_system');">
+                 <a href="#" onclick="window.open('http://twitter.com/STTTerpaduNF', '_system');">
                     <img src="ico/Twitter_64x64.png" class="img">
                 </a>
             </ons-col>
             <ons-col width="58px">
-               <a href="#" onclick="window.open('http://instagram.com/STTTerpaduNF', '_system');">
+             <a href="#" onclick="window.open('http://instagram.com/STTTerpaduNF', '_system');">
                 <img src="ico/Instagram-64.png" class="img">
             </a>
         </ons-col>
         <ons-col width="58px">
-           <a href="#" onclick="window.open('http://www.youtube.com/STTNF', '_system');">
+         <a href="#" onclick="window.open('http://www.youtube.com/STTNF', '_system');">
             <img src="ico/youtube_64.png" class="img">
         </a>
     </ons-col>
     <ons-col width="58px">
-       <a href="#" onclick="window.open('https://google.com/+STTTerpaduNurulFikri', '_system');">
+     <a href="#" onclick="window.open('https://google.com/+STTTerpaduNurulFikri', '_system');">
         <img src="ico/Google.png" class="img">
     </a>
 </ons-col>
