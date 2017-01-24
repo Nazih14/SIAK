@@ -15,11 +15,6 @@ class Auth extends CI_Controller {
     }
 
     public function login() {
-        // if($_POST){
-        // $input = $this->input->post('UserPassword', TRUE);
-        // echo $input;
-        // die();
-        // }
         $this->load->library('form_validation');
         $params['success'] = 0;
         $params['message'] = 'Authentication Failed'; 
@@ -27,13 +22,11 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules('UserPassword', 'Password', 'trim|required|xss_clean');
         if ($this->form_validation->run()) {
 
-            $data['id'] = $this->input->post('UserId', TRUE);
-            $data['password'] = $this->input->post('UserPassword', TRUE);
+            $data['login'] = $this->input->post('UserId');
+            $data['password'] = $this->input->post('UserPassword');
 
 
             $ret = $this->User_model->get($data);
-//            count($ret);
-//            die();
             if (count($ret) > 0) {
                 $arr_res = array(
                       'id' => $ret['MhswID'],

@@ -606,7 +606,7 @@
 
 
 <center>
-    <ons-button modifier="large" class="button button--large--quit" onclick="myNavigator.pushPage('tahun.html', {animation: 'fade'})" style="width:100%;">Cek Informasi Keuangan</ons-button>
+    <ons-button modifier="large" class="button button--large--quit" ng-click="bipot()" style="width:100%;">Cek Informasi Keuangan</ons-button>
 </center>
 </ons-page>
 </ons-template>
@@ -627,132 +627,23 @@
         </ons-toolbar>
 
         <br><br><p></p>
-        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-            <ons-row>
-                <ons-col width="45px">
-                    <img src="img/calendar.png" class="img">
-                </ons-col>
-                <ons-col>
-                    <div class="location">
-                        Tahun Akademik
-                    </div>
-                    <div class="name">
-                        20121
-                    </div>
-                </ons-col>
-            </ons-row>
-        </div>
 
-        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-            <ons-row>
-                <ons-col width="45px">
-                    <img src="img/calendar.png" class="img">
-                </ons-col>
-                <ons-col>
-                    <div class="location">
-                        Tahun Akademik
-                    </div>
-                    <div class="name">
-                        20122
-                    </div>
-                </ons-col>
-            </ons-row>
-        </div>
-
-        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-            <ons-row>
-                <ons-col width="45px">
-                    <img src="img/calendar.png" class="img">
-                </ons-col>
-                <ons-col>
-                    <div class="location">
-                        Tahun Akademik
-                    </div>
-                    <div class="name">
-                        20131
-                    </div>
-                </ons-col>
-            </ons-row>
-        </div>
-
-        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-            <ons-row>
-                <ons-col width="45px">
-                    <img src="img/calendar.png" class="img">
-                </ons-col>
-                <ons-col>
-                    <div class="location">
-                        Tahun Akademik
-                    </div>
-                    <div class="name">
-                        20132
-                    </div>
-                </ons-col>
-            </ons-row>
-        </div>
-
-        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-            <ons-row>
-                <ons-col width="45px">
-                    <img src="img/calendar.png" class="img">
-                </ons-col>
-                <ons-col>
-                    <div class="location">
-                        Tahun Akademik
-                    </div>
-                    <div class="name">
-                        20141
-                    </div>
-                </ons-col>
-            </ons-row>
-        </div>
-
-        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-            <ons-row>
-                <ons-col width="45px">
-                    <img src="img/calendar.png" class="img">
-                </ons-col>
-                <ons-col>
-                    <div class="location">
-                        Tahun Akademik
-                    </div>
-                    <div class="name">
-                        20142
-                    </div>
-                </ons-col>
-            </ons-row>
-        </div>
-
-        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-            <ons-row>
-                <ons-col width="45px">
-                    <img src="img/calendar.png" class="img">
-                </ons-col>
-                <ons-col>
-                    <div class="location">
-                        Tahun Akademik
-                    </div>
-                    <div class="name">
-                        20151
-                    </div>
-                </ons-col>
-            </ons-row>
-        </div>
-
-        <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
-            <ons-row>
-                <ons-col width="45px">
-                    <img src="img/calendar.png" class="img">
-                </ons-col>
-                <ons-col>
-                    <div class="location">
-                        Tahun Akademik
-                    </div>
-                    <div class="name">
-                        20152
-                    </div>
-                </ons-col>
-            </ons-row>
+        <div ng-repeat="item in contents">
+            <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+                <ons-row>
+                    <ons-col width="45px">
+                        <img src="img/calendar.png" class="img">
+                    </ons-col>
+                    <ons-col>
+                        <div class="location">
+                            Tahun Akademik
+                        </div>
+                        <div class="name">
+                            {{item.TahunID}}
+                        </div>
+                    </ons-col>
+                </ons-row>
+            </div>
         </div>
 
     </ons-page>
@@ -763,7 +654,7 @@
 <!--halaman pilih keuangan -->
 
 <ons-template id="bipot.html">
-    <ons-page modifier="shop-details" style="background:#eee;">
+    <ons-page modifier="shop-details" ng-controller="bipotCtrl" style="background:#eee;">
 
         <ons-toolbar style="background: #01166c; border: 1px solid #01166c;">
             <div class="left">
@@ -774,16 +665,11 @@
             </div>
             <div class="center">
 
-           </div>
-           <div class="right">
-           <ons-toolbar-button ng-click="menu.toggle()">
-                    <font color="#fff"> <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon></font>
-                </ons-toolbar-button>
-            <!-- <div ng-controller='portfoliosController'>
-                <ons-toolbar-button>
-                    <ons-icon icon="fa-sign-out" ng-click="show()" style="color: #fff"></ons-icon>
-                </ons-toolbar-button>
-            </div> -->
+            </div>
+            <div class="right">
+               <ons-toolbar-button ng-click="menu.toggle()">
+                <font color="#fff"> <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon></font>
+            </ons-toolbar-button>
         </div>
     </ons-toolbar>
     <div class="profile-card2">

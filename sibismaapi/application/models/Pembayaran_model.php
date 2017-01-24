@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 /**
- * user Model Class
+ * Pembayaran Model Class
  *
  * @package     SISBAM
  * @subpackage  Models
@@ -21,23 +21,11 @@ class User_model extends CI_Model {
     function get($params = array()) {
 
         if (isset($params['id'])) {
-            $this->db->where('MhswID', $params['id']);
+            $this->db->where('BayarMhswID', $params['id']);
         }
 
-        if (isset($params['login'])) {
-            $this->db->where('Login', $params['login']);
-        }
-
-        if (isset($params['password'])) {
-            $this->db->where('Password', $params['password']);
-        }
-
-        if (isset($params['name'])) {
-            $this->db->where('Nama', $params['name']);
-        }
-
-        if (isset($params['email'])) {
-            $this->db->where('Email', $params['email']);
+        if (isset($params['MhswID'])) {
+            $this->db->where('MhswID', $params['MhswID']);
         }
 
         if (isset($params['limit'])) {
@@ -51,14 +39,22 @@ class User_model extends CI_Model {
         if (isset($params['order_by'])) {
             $this->db->order_by($params['order_by'], 'desc');
         } else {
-            $this->db->order_by('MhswID', 'desc');
+            $this->db->order_by('BayarMhswID', 'desc');
         }
 
-        $this->db->select('*');
+        $this->db->select('BayarMhswID,
+                             TahunID,
+                             MhswID, 
+                             Bank, 
+                             BuktiSetoran,
+                             Tanggal,
+                             Keterangan,
+                             Jumlah,
+                             TahunID');
 
-        $res = $this->db->get('mhsw');
+        $res = $this->db->get('bayarmhsw');
 
-        if (isset($params['id']) OR isset($params['login'])) {
+        if (isset($params['id'])) {
             return $res->row_array();
         } else {
             return $res->result_array();

@@ -2,7 +2,7 @@
 
     'use strict';
     var module = angular.module('app', ['onsen', 'ngSanitize']);
-    var base_url = 'http://sibismaapi.rumahcg.com/';
+    var base_url = 'http://localhost/SIAK/sibismaapi/';
 
     module.controller('homeCtrl', function($scope, $http) {
         angular.element(document).ready(function() {
@@ -56,14 +56,30 @@
          $scope.foto = 'https://info.nurulfikri.ac.id/'+window.localStorage.getItem('foto');
     });
 
-
     module.controller('pageCtrl', function($scope, $http, $filter) {
         angular.element(document).ready(function() {
             if (window.localStorage.getItem('is_logged') === 'false') {
                 myNavigator.pushPage('login.html', {animation: 'slide'});
             }
+            var postData = $.param({
+                MhswID : window.localStorage.getItem('id'),
+            })
+            var url = base_url + 'bipot/group';
+            $http({
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                url: url,
+                data:postData
+            }).
+            success(function(response) {
+                $scope.contents = response.data;
+                console.log($scope.contents);
+            });
             $scope.Start = function() {
                 myNavigator.pushPage('page.html', {animation: 'lift'});
+            }
+            $scope.bipot = function(){
+                myNavigator.pushPage('tahun.html', {animation: 'fade'});
             }
         });
         $scope.id = window.localStorage.getItem('id');
@@ -142,6 +158,7 @@
                     myNavigator.pushPage('start.html', {animation: 'slide'});
 
                 } else {
+                    console.log(response);
                     $scope.loginState = true;
                 }
             }).
@@ -154,6 +171,29 @@
             myNavigator.pushPage('start.html', {animation: 'slide'});
         }
         $scope.hiddenError = false;
+    });
+
+    module.controller('bipotCtrl', function($scope, $http, $filter) {
+        angular.element(document).ready(function() {
+
+            if (window.localStorage.getItem('is_logged') === 'false') {
+                myNavigator.pushPage('login.html', {animation: 'slide'});
+            }
+            var postData = $.param({
+                MhswID : window.localStorage.getItem('id')
+            })
+            var url = base_url + 'bipot/detail';
+            $http({
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                url: url,
+                data:postData
+            }).
+            success(function(response) {
+                console.log(response);
+            });
+
+        });
     });
 
     document.addEventListener("deviceready", onDeviceReady, false);
