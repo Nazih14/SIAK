@@ -9,7 +9,7 @@ if (!defined('BASEPATH'))
  * @package     SISBAM
  * @subpackage  Models
  * @category    Models
- * @author      Sistiandy Syahbana nugraha <sistiandy.web.id>
+ * @author      bopas
  */
 class User_model extends CI_Model {
 

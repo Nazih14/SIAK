@@ -125,53 +125,58 @@
         -o-background-size: cover;
         background-size: cover;"
         ">
+        <div ng-show="hiddenAnimate">
+            <div class="progress-bar progress-bar--indeterminate">
+              <div class="progress-bar__primary"></div>
+              <div class="progress-bar__secondary"></div>
+          </div>
+      </div>
 
+      <div class="profile-card">
+        <img src="img/siak3.png" class="img">
+        <!-- <div class="sub"> ------{ Akses Login Siak }------</div> -->
+    </div>
+    <form name="login" class="login-form">
 
-        <div class="profile-card">
-            <img src="img/siak3.png" class="img">
-            <!-- <div class="sub"> ------{ Akses Login Siak }------</div> -->
-        </div>
-        <form name="login" class="login-form">
+        <ons-row>
+            <ons-col class="person-name">
+                <input type="text" required class="text-input--underbar width-full" ng-model="user.UserId" placeholder="Nim Mahasiswa" style="width:100%;">
+            </ons-col>
+        </ons-row>
 
-            <ons-row>
-                <ons-col class="person-name">
-                    <input type="text" required class="text-input--underbar width-full" ng-model="user.UserId" placeholder="Nim Mahasiswa" style="width:100%;">
-                </ons-col>
-            </ons-row>
+        <ons-row>
+            <ons-col class="person-name">
+                <input type="password" required class="text-input--underbar width-full" ng-model="user.UserPassword" placeholder="Password" style="width:100%;">
+            </ons-col>
+        </ons-row>
 
-            <ons-row>
-                <ons-col class="person-name">
-                    <input type="password" required class="text-input--underbar width-full" ng-model="user.UserPassword" placeholder="Password" style="width:100%;">
-                </ons-col>
-            </ons-row>
-
-            <div class="content-padded">
-                <center>
-                    <div ng-show="hiddenAnimate">
-                        <div class="overlay"></div>
-                        <div class="spinner">
-                            <div class="double-bounce1"></div>
-                            <div class="double-bounce2"></div>
-                        </div>
-                        <div class="please-wait">Please Wait...</div>
+        <div class="content-padded">
+            <center>
+                <div ng-show="hiddenAnimate">
+                    <div class="overlay"></div>
+                    <div class="spinner">
+                        <div class="double-bounce1"></div>
+                        <div class="double-bounce2"></div>
                     </div>
+                    <div class="please-wait">Please Wait...</div>
+                </div>
 
-                    <span ng-show="loginState">
-                        <small class="notification"><i>Nim and password incorrect</i></small>
-                    </span>
-                    <span ng-show="errorState">
-                        <small class="notification"><i>Please check your connection</i></small>
-                    </span>
-                </center>
-            </div>
+                <span ng-show="loginState">
+                    <small class="notification"><i>Nim and password incorrect</i></small>
+                </span>
+                <span ng-show="errorState">
+                    <small class="notification"><i>Please check your connection</i></small>
+                </span>
+            </center>
+        </div>
 
-            <ons-button modifier="large" class="button button-circle" ng-disabled="login.$invalid" ng-click="SignIn(user)"><i class="ion-android-lock"></i> Log In
-            </ons-button>
+        <ons-button modifier="large" class="button button-circle" ng-disabled="login.$invalid" ng-click="SignIn(user)"><i class="ion-android-lock"></i> Log In
+        </ons-button>
 
-            <p class="">Sistem Informasi Keuangan Mahasiswa STTT-NF</p>
-        </form>
+        <p class="">Sistem Informasi Keuangan Mahasiswa STTT-NF</p>
+    </form>
 
-    </ons-page>
+</ons-page>
 </div> 
 </ons-template>
 <!-- Tutup Halaman Login -->
@@ -195,17 +200,15 @@
                 <div class="center"></div>
             </ons-toolbar>
 
-            <div class="profile">
+            <div class="profile-card">
                 <img ng-src="{{foto}}" class="image-mobile">
+                <div class="profile-name">Siak-App </div>
+                <div class="profile-desc">SISTEM INFORMASI AKADEMIK<br> MODUL KEUANGAN MAHASISWA <br>SEKOLAH TINGGI TEKNOLOGI TERPADU - NURUL FIKRI</div>
             </div>
-            <br> 
-            <h1>Selamat Datang di</h1>
-            <div class="card-das">SISTEM INFORMASI<br> BIAYA STUDI MAHASISWA <br>SEKOLAH TINGGI TEKNOLOGI TERPADU - NURUL FIKRI</div>
-            <br>
 
-            <button class="btn-floating btn-large waves-effect waves-light pink" title="start" ng-click="Start()"><i class="ion-checkmark"></i>
+            <button class="btn-floating btn-large waves-effect waves-light pink" title="start" ng-click="Start()"><i class="ion ion-eye"></i>
             </button>
-            <div style="text-align:center;opacity:0.4;">Berhasil Login</div>
+            <div style="text-align:center;opacity:0.4;">Detail Profil</div>
         </ons-page>
     </div> 
 </div> 
@@ -609,7 +612,7 @@
         <ons-toolbar style="background: #01166c;">
             <div class="left">
                 <ons-toolbar-button onclick="myNavigator.pushPage('page.html', {animation: 'fade'})">
-                    <font color="#fff"><ons-icon icon="fa-chevron-left" fixed-width="false"></ons-icon> Siak-App</font>
+                    <font color="#fff"><ons-icon icon="ion ion-chevron-left" fixed-width="false"></ons-icon> Siak-App</font>
                 </ons-toolbar-button>
             </div>
             <!--<div class="left"><ons-back-button ons-if-platform="ios">Back</ons-back-button></div>-->
@@ -620,7 +623,7 @@
         <div ng-repeat="item in contents">
             <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
                 <ons-row>
-                    <ons-col width="45px">
+                    <ons-col width="55px">
                         <img src="img/calendar.png" class="img">
                     </ons-col>
                     <ons-col>
@@ -631,11 +634,14 @@
                             {{item.TahunID}}
                         </div>
                     </ons-col>
-                </ons-row>
-            </div>
-        </div>
+                    <ons-col width="15px">
+                     <i class="ion ion-chevron-right"></i>
+                 </ons-col>
+             </ons-row>
+         </div>
+     </div>
 
-    </ons-page>
+ </ons-page>
 </ons-template>
 
 <!--halaman pilih tahun -->
@@ -648,12 +654,12 @@
         <ons-toolbar style="background: #01166c; border: 1px solid #01166c;">
             <div class="left">
                 <ons-toolbar-button onclick="myNavigator.pushPage('tahun.html', {animation: 'fade'})">
-                    <font color="#fff"><ons-icon icon="fa-chevron-left" fixed-width="false"></ons-icon> Siak-App</font>
+                    <font color="#fff"><ons-icon icon="ion ion-chevron-left" fixed-width="false"></ons-icon> Siak-App</font>
                 </ons-toolbar-button>
 
             </div>
             <div class="center">
-                
+
             </div>  
         </ons-toolbar>
         <div class="profile-card2">
