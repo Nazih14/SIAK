@@ -27,7 +27,8 @@ class Auth extends CI_Controller {
 
 
             $ret = $this->User_model->get($data);
-            if (count($ret) > 0) {
+
+            if (!empty($ret)) {
                 $arr_res = array(
                       'id' => $ret['MhswID'],
                     'name' => $ret['Nama'],
@@ -37,7 +38,7 @@ class Auth extends CI_Controller {
                     'status' => $ret['StatusMhswID'],
                     'program' => $ret['ProgramID'],
                     'prodi' => $ret['ProdiID'],
-                    'agama' => $ret['Agama_nama'],
+                    'agama' => $ret['agama_nama'],
                     'email' => $ret['Email'],
                     'angkatan' => $ret['TahunID'],
                     'batasstudi' => $ret['BatasStudi'],
@@ -49,7 +50,7 @@ class Auth extends CI_Controller {
                     'pos' => $ret['KodePos'],
                     'propinsi' => $ret['Propinsi'],
                     'kota' => $ret['Kota'],
-                    'kelamin' => $ret['Kelamin'],
+                    'kelamin' => $ret['kelamin_nama'],
                     'statusid' => $ret['StatusAwalID'],
                     'ayah' => $ret['NamaAyah'],
                     'ibu' => $ret['NamaIbu'],

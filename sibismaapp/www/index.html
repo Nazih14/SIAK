@@ -592,16 +592,14 @@
 
 
 <center>
-    <ons-button modifier="large" class="button button--large--quit" ng-click="bipot()" style="width:100%;">Cek Informasi Keuangan</ons-button>
+    <ons-button modifier="large" class="button button--large--quit" ng-click="tahun()" style="width:100%;">Cek Informasi Keuangan</ons-button>
 </center>
 </ons-page>
 </ons-template>
 
-
-
 <!--halaman pilih tahun -->
 <ons-template id="tahun.html">
-    <ons-page modifier="shop-details" ng-controller="pageCtrl" style="background:#ddd;">
+    <ons-page modifier="shop-details" ng-controller="tahunCtrl" style="background:#ddd;">
 
         <ons-toolbar style="background: #01166c;">
             <div class="left">
@@ -615,7 +613,7 @@
         <br><br><p></p>
 
         <div ng-repeat="item in contents">
-            <div class="card-3" onclick="keuangan(item.TahunID)">
+            <div class="card-3" ng-click="keuangan(item.TahunID)">
                 <ons-row>
                     <ons-col width="55px">
                         <img src="img/calendar.png" class="img">
@@ -690,23 +688,23 @@
      </div>
      <ons-scroller style="height:850px; width: 100%">
 
-        <div class="card-4">
+        <div class="card-4" ng-repeat="item in bipot">
             <ons-col class="plan-right">
                 <ons-col>
-                    <div class="timeline-date">No 1</div>
+                    <div class="timeline-date">No {{index+1}}</div>
                     <div class="timline-from">
-                      <span class="timeline-name">20152</span>
+                      <span class="timeline-name">{{item.TahunID}}</span>
                       <span class="timeline-id"># Tahun Akademik</span>
                   </div>
               </ons-col>
               <p></p>
-              <div class="plan-name">Biaya Operasional Pendidikan</div>
+              <div class="plan-name">{{item.Nama}}</div>
 
               <div class="plan-info">
                 <ons-list-item>
                     <ons-icon icon="fa-fax" size="15px"></ons-icon>
                     Jumlah x Besar
-                    <span class="list-item-note lucent">  1x Rp.2.750.000,- </span>
+                    <span class="list-item-note lucent">  {{item.Jumlah}}x Rp.{{item.Besar}},- </span>
                 </ons-list-item>
                 <ons-list-item>
                     <ons-icon icon="fa-minus-square" size="15px"></ons-icon>
@@ -716,18 +714,18 @@
                 <ons-list-item>
                     <ons-icon icon="fa-th-list" size="15px"></ons-icon>
                     Total
-                    <span class="list-item-note lucent">  Rp.2.750.000,- </span>
+                    <span class="list-item-note lucent">  Rp.{{item.Jumlah*item.Besar}},- </span>
                 </ons-list-item>
                 <ons-list-item>
                     <ons-icon icon="fa-credit-card" size="15px"></ons-icon>
                     Dibayar
-                    <span class="list-item-note lucent"> Rp.2.750.000,- </span>
+                    <span class="list-item-note lucent"> Rp.{{item.Dibayar}},- </span>
                 </ons-list-item>
-                <ons-list-item>
+                <!-- <ons-list-item>
                     <ons-icon icon="fa-plus-square" size="15px"></ons-icon>
                     Jumlah ++
                     <span class="list-item-note lucent"><div class="notification">Rp.5.750.000,-</div></span>
-                </ons-list-item>
+                </ons-list-item> -->
                 <ons-list-item>
                     <ons-icon icon="fa-file-text-o" size="15px"></ons-icon>
                     Catatan
@@ -736,169 +734,7 @@
             </div>
         </ons-col>
     </div>
-
-
-    <div class="card-4">
-       <ons-col>
-        <div class="timeline-date">No 2</div>
-        <div class="timline-from">
-          <span class="timeline-name">20152</span>
-          <span class="timeline-id"># Tahun Akademik</span>
-      </div>
-  </ons-col>
-  <p></p>
-  <ons-col class="plan-right">
-    <div class="plan-name">Biaya Per SKS</div>
-
-    <div class="plan-info">
-        <ons-list-item>
-            <ons-icon icon="fa-fax" size="15px"></ons-icon>
-            Jumlah x Besar
-            <span class="list-item-note lucent"> 25x Rp.200.000,-</span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-minus-square" size="15px"></ons-icon>
-            Diskon
-            <span class="list-item-note lucent"> Rp.0,-</span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-th-list" size="15px"></ons-icon>
-            Total
-            <span class="list-item-note lucent"> Rp.3.000.000,-</span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-credit-card" size="15px"></ons-icon>
-            Dibayar
-            <span class="list-item-note lucent"> Rp.3.000.000,-</span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-plus-square" size="15px"></ons-icon>
-            Jumlah ++
-            <span class="list-item-note lucent"><div class="notification">Rp.5.750.000,-</div></span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-file-text-o" size="15px"></ons-icon>
-            Catatan
-            <span class="list-item-note lucent">  - </span>
-        </ons-list-item>
-    </div>
-</ons-col>
-</div>
-
-<div class="card-4">
-   <ons-list-item>
-    <ons-icon icon="fa-money" size="15px"></ons-icon>
-    Sisa
-    <span class="list-item-note lucent">Rp.0,-</span>
-</ons-list-item>
-</div>
-
-</ons-scroller>
-</ons-carousel-item>
-
-<ons-carousel-item>
-    <div class="card-2">
-        <div class="prop-desc">
-            <ons-icon icon="fa-volume-up"></ons-icon>
-            Informasi Pembayaran dan Penarikan
-        </div>
-    </div>
-
-    <ons-scroller style="height: 850px; width: 100%">
-       <div class="card-4">
-           <ons-col>
-            <div class="timeline-date">No 1</div>
-            <div class="timline-from">
-              <span class="timeline-name">20152</span>
-              <span class="timeline-id"># Tahun Akademik</span>
-          </div>
-      </ons-col>
-      <p></p>
-      <ons-col class="plan-right">
-        <div class="plan-name">Tanggal : 22-08-2015</div>
-
-        <div class="plan-info">
-            <ons-list-item>
-                <ons-icon icon="fa-list-ol" size="15px"></ons-icon>
-                Nomor Bukti
-                <span class="list-item-note lucent"> 2015-00608 </span>
-            </ons-list-item>
-            <ons-list-item>
-                <ons-icon icon="fa-keyboard-o" size="15px"></ons-icon>
-                Nomor Rekening
-                <span class="list-item-note lucent"> 0174 751 711 </span>
-            </ons-list-item>
-            <ons-list-item>
-                <ons-icon icon="fa-bank" size="15px"></ons-icon>
-                Bank
-                <span class="list-item-note lucent"> BNI </span>
-            </ons-list-item>
-            <ons-list-item>
-                <ons-icon icon="fa-barcode" size="15px"></ons-icon>
-                Bukti Setoran
-                <span class="list-item-note lucent"> CASH </span>
-            </ons-list-item>
-            <ons-list-item>
-                <ons-icon icon="fa-plus-square" size="15px"></ons-icon>
-                Jumlah
-                <span class="list-item-note lucent"><div class="notification"> Rp.6.500.000,- </div></span>
-            </ons-list-item>
-            <ons-list-item>
-                <ons-icon icon="fa-file-text-o" size="15px"></ons-icon>
-                Keterangan
-                <span class="list-item-note lucent"> BOP smt 8 </span>
-            </ons-list-item>
-        </div>
-    </ons-col>
-
-</div>
-
-<div class="card-4">
-   <ons-col>
-    <div class="timeline-date">No 2</div>
-    <div class="timline-from">
-      <span class="timeline-name">20152</span>
-      <span class="timeline-id"># Tahun Akademik</span>
-  </div>
-</ons-col>
-<p></p>
-<ons-col class="plan-right">
-    <div class="plan-name">Tanggal : 23-08-2015</div>
-
-    <div class="plan-info">
-        <ons-list-item>
-            <ons-icon icon="fa-list-ol" size="15px"></ons-icon>
-            Nomor Bukti
-            <span class="list-item-note lucent"> 2015-00887 </span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-keyboard-o" size="15px"></ons-icon>
-            Nomor Rekening
-            <span class="list-item-note lucent"> 0174 751 711 </span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-bank" size="15px"></ons-icon>
-            Bank
-            <span class="list-item-note lucent"> BNI </span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-barcode" size="15px"></ons-icon>
-            Bukti Setoran
-            <span class="list-item-note lucent"> CASH </span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-plus-square" size="15px"></ons-icon>
-            Jumlah
-            <span class="list-item-note lucent"><div class="notification"> Rp.6.500.000,- </div></span>
-        </ons-list-item>
-        <ons-list-item>
-            <ons-icon icon="fa-file-text-o" size="15px"></ons-icon>
-            Keterangan
-            <span class="list-item-note lucent"> - </span>
-        </ons-list-item>
-    </div>
-</ons-col>
-</div>
+<br>
 
 </ons-scroller>
 </ons-carousel-item>

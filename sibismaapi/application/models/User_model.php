@@ -25,19 +25,19 @@ class User_model extends CI_Model {
         }
 
         if (isset($params['login'])) {
-            $this->db->where('Login', $params['login']);
+            $this->db->where('mhsw.Login', $params['login']);
         }
 
         if (isset($params['password'])) {
-            $this->db->where('Password', $params['password']);
+            $this->db->where('mhsw.Password', $params['password']);
         }
 
         if (isset($params['name'])) {
-            $this->db->where('Nama', $params['name']);
+            $this->db->where('mhsw.Nama', $params['name']);
         }
 
         if (isset($params['email'])) {
-            $this->db->where('Email', $params['email']);
+            $this->db->where('mhsw.Email', $params['email']);
         }
 
         if (isset($params['limit'])) {
@@ -54,10 +54,7 @@ class User_model extends CI_Model {
             $this->db->order_by('MhswID', 'desc');
         }
 
-        // $this->db->select('*');
-
-        // $res = $this->db->get('mhsw');
-
+        $this->db->select('*');
         $this->db->select('program.Nama as program_nama,
                             dosen.Nama as dosen_nama,
                             agama.Nama as agama_nama, 
@@ -65,12 +62,12 @@ class User_model extends CI_Model {
                             statussipil.Nama as statussipil_nama, 
                             statusmhsw.Nama as status_mhsw'
                             );
-        $this->db->join('program', 'mhsw.ProgramID = program.ProgramID', life);
-        $this->db->join('dosen', 'mhsw.PenasehatAkademik = dosen.Login');
-        $this->db->join('agama', 'mhsw.Agama = agama.Nama');
-        $this->db->join('kelamin', 'mhsw.Kelamin = kelamin.Nama');
-        $this->db->join('statussipil', 'mhsw.StatusSipil = statussipil.Nama');
-        $this->db->join('statusmhsw', 'mhsw.StatusMhswID = statusmhsw.Nama');
+        $this->db->join('program', 'mhsw.ProgramID = program.ProgramID', 'left');
+        $this->db->join('dosen', 'mhsw.PenasehatAkademik = dosen.Login', 'left');
+        $this->db->join('agama', 'mhsw.Agama = agama.Agama', 'left');
+        $this->db->join('kelamin', 'mhsw.Kelamin = kelamin.Kelamin', 'left');
+        $this->db->join('statussipil', 'mhsw.StatusSipil = statussipil.StatusSipil', 'left');
+        $this->db->join('statusmhsw', 'mhsw.StatusMhswID = statusmhsw.StatusMhswID', 'left');
 
         $res = $this->db->get('mhsw');
         if (isset($params['id']) OR isset($params['login'])) {
