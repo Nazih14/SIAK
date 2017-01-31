@@ -30,10 +30,10 @@
                 url: url,
                 data: postData,
             }).
-                    success(function(response) {
+            success(function(response) {
                 myNavigator.pushPage('login.html', {animation: 'slide'});
             }).
-                    error(function() {
+            error(function() {
             });
             window.localStorage.removeItem('id');
             window.localStorage.removeItem('name');
@@ -43,174 +43,178 @@
     });
 
 //halaman start
-    module.controller('startCtrl', function($scope, $http, $filter) {
-        angular.element(document).ready(function() {
-            if (window.localStorage.getItem('is_logged') === 'false') {
-                myNavigator.pushPage('login.html', {animation: 'slide'});
-            }
-            $scope.Start = function() {
-                myNavigator.pushPage('page.html', {animation: 'lift'});
-            }
-
-        });
-         $scope.foto = 'https://info.nurulfikri.ac.id/'+window.localStorage.getItem('foto');
-    });
-
-    module.controller('pageCtrl', function($scope, $http, $filter) {
-        angular.element(document).ready(function() {
-            if (window.localStorage.getItem('is_logged') === 'false') {
-                myNavigator.pushPage('login.html', {animation: 'slide'});
-            }
-            var postData = $.param({
-                MhswID : window.localStorage.getItem('id'),
-            })
-            var url = base_url + 'bipot/group';
-            $http({
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                url: url,
-                data:postData
-            }).
-            success(function(response) {
-                $scope.contents = response.data;
-                console.log($scope.contents);
-            });
-            $scope.Start = function() {
-                myNavigator.pushPage('page.html', {animation: 'lift'});
-            }
-            $scope.bipot = function(){
-                myNavigator.pushPage('tahun.html', {animation: 'fade'});
-            }
-        });
-        $scope.id = window.localStorage.getItem('id');
-        $scope.name = window.localStorage.getItem('name');
-        $scope.foto = 'https://info.nurulfikri.ac.id/'+window.localStorage.getItem('foto');
-        $scope.pob = window.localStorage.getItem('pob');
-        $scope.dob = window.localStorage.getItem('dob');
-        $scope.statusid = window.localStorage.getItem('statusid');
-        $scope.status = window.localStorage.getItem('status');
-        $scope.program = window.localStorage.getItem('program');
-        $scope.angkatan = window.localStorage.getItem('angkatan');
-        $scope.batasstudi = window.localStorage.getItem('batasstudi');
-        $scope.email = window.localStorage.getItem('email');
-        $scope.prodi = window.localStorage.getItem('prodi');
-        $scope.pembimbing = window.localStorage.getItem('pembimbing');
-        $scope.agama = window.localStorage.getItem('agama');
-        $scope.kelamin = window.localStorage.getItem('kelamin');
-        $scope.phone = window.localStorage.getItem('phone');
-        $scope.alamat = window.localStorage.getItem('alamat');
-        $scope.rt = window.localStorage.getItem('rt');
-        $scope.rw = window.localStorage.getItem('rw');
-        $scope.pos = window.localStorage.getItem('pos');
-        $scope.propinsi = window.localStorage.getItem('propinsi');
-        $scope.kota = window.localStorage.getItem('kota');
-        $scope.ayah = window.localStorage.getItem('ayah');
-        $scope.ibu = window.localStorage.getItem('ibu');
-        $scope.hp = window.localStorage.getItem('hp');
-    });
-
-
-    module.controller('LoginCtrl', function($scope, $http) {
-        $scope.SignIn = function(user) {
-            $scope.hiddenAnimate = true;
-            $scope.loginState = false;
-
-            var postData = $.param(user);
-            var url = base_url + 'auth/login';
-            $http({
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                url: url,
-                data: postData,
-            }).
-                    success(function(response) {
-                $scope.hiddenAnimate = false;
-                if (response.success === 1) {
-                    $scope.contens = response.data;
-                    $scope.login.$invalid = false;
-                    var contens = response.data;
-                    window.localStorage.setItem('is_logged', true);
-                    window.localStorage.setItem('id', contens.id);
-                    window.localStorage.setItem('name', contens.name);
-                    window.localStorage.setItem('email', contens.email);
-                    window.localStorage.setItem('foto', contens.foto);
-                    window.localStorage.setItem('pob', contens.pob);
-                    window.localStorage.setItem('dob', contens.dob);
-                    window.localStorage.setItem('statusid', contens.statusid);
-                    window.localStorage.setItem('status', contens.status);
-                    window.localStorage.setItem('program', contens.program);
-                    window.localStorage.setItem('prodi', contens.prodi);
-                    window.localStorage.setItem('agama', contens.agama);
-                    window.localStorage.setItem('angkatan', contens.angkatan);
-                    window.localStorage.setItem('batasstudi', contens.batasstudi);
-                    window.localStorage.setItem('pembimbing', contens.pembimbing);
-                    window.localStorage.setItem('kelamin', contens.kelamin);
-                    window.localStorage.setItem('phone', contens.phone);
-                    window.localStorage.setItem('alamat', contens.alamat);
-                    window.localStorage.setItem('rt', contens.rt);
-                    window.localStorage.setItem('rw', contens.rw);
-                    window.localStorage.setItem('pos', contens.pos);
-                    window.localStorage.setItem('propinsi', contens.propinsi);
-                    window.localStorage.setItem('kota', contens.kota);
-                    window.localStorage.setItem('ayah', contens.ayah);
-                    window.localStorage.setItem('ibu', contens.ibu);
-                    window.localStorage.setItem('hp', contens.hp);
-                    myNavigator.pushPage('start.html', {animation: 'slide'});
-
-                } else {
-                    console.log(response);
-                    $scope.loginState = true;
-                }
-            }).
-                    error(function() {
-                $scope.errorState = true;
-                $scope.hiddenAnimate = false;
-            });
-        };
-        if (window.localStorage.getItem('is_logged') === 'true') {
-            myNavigator.pushPage('start.html', {animation: 'slide'});
+module.controller('startCtrl', function($scope, $http, $filter) {
+    angular.element(document).ready(function() {
+        if (window.localStorage.getItem('is_logged') === 'false') {
+            myNavigator.pushPage('login.html', {animation: 'slide'});
         }
-        $scope.hiddenError = false;
+        $scope.Start = function() {
+            myNavigator.pushPage('page.html', {animation: 'lift'});
+        }
+
     });
+    $scope.foto = 'https://info.nurulfikri.ac.id/'+window.localStorage.getItem('foto');
+});
 
-    module.controller('bipotCtrl', function($scope, $http, $filter) {
-        angular.element(document).ready(function() {
-
-            if (window.localStorage.getItem('is_logged') === 'false') {
-                myNavigator.pushPage('login.html', {animation: 'slide'});
-            }
-            var postData = $.param({
-                MhswID : window.localStorage.getItem('id')
-            })
-            var url = base_url + 'bipot/detail';
-            $http({
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                url: url,
-                data:postData
-            }).
-            success(function(response) {
-                console.log(response);
-            });
-
+module.controller('pageCtrl', function($scope, $http, $filter) {
+    angular.element(document).ready(function() {
+        if (window.localStorage.getItem('is_logged') === 'false') {
+            myNavigator.pushPage('login.html', {animation: 'slide'});
+        }
+        var postData = $.param({
+            MhswID : window.localStorage.getItem('id'),
+        })
+        var url = base_url + 'bipot/group';
+        $http({
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            url: url,
+            data:postData
+        }).
+        success(function(response) {
+            $scope.contents = response.data;
         });
+        $scope.Start = function() {
+            myNavigator.pushPage('page.html', {animation: 'lift'});
+        }
+        $scope.bipot = function(){
+            myNavigator.pushPage('tahun.html', {animation: 'fade'});
+        }
+        $scope.keuangan = function(tahun){
+            window.localStorage.removeItem('tahunKeuangan');
+            window.localStorage.setItem('tahunKeuangan', tahun);
+            myNavigator.pushPage('keuangan.html', {animation: 'fade'});
+        }
     });
+    $scope.id = window.localStorage.getItem('id');
+    $scope.name = window.localStorage.getItem('name');
+    $scope.foto = 'https://info.nurulfikri.ac.id/'+window.localStorage.getItem('foto');
+    $scope.pob = window.localStorage.getItem('pob');
+    $scope.dob = window.localStorage.getItem('dob');
+    $scope.statusid = window.localStorage.getItem('statusid');
+    $scope.status = window.localStorage.getItem('status');
+    $scope.program = window.localStorage.getItem('program');
+    $scope.angkatan = window.localStorage.getItem('angkatan');
+    $scope.batasstudi = window.localStorage.getItem('batasstudi');
+    $scope.email = window.localStorage.getItem('email');
+    $scope.prodi = window.localStorage.getItem('prodi');
+    $scope.pembimbing = window.localStorage.getItem('pembimbing');
+    $scope.agama = window.localStorage.getItem('agama');
+    $scope.kelamin = window.localStorage.getItem('kelamin');
+    $scope.phone = window.localStorage.getItem('phone');
+    $scope.alamat = window.localStorage.getItem('alamat');
+    $scope.rt = window.localStorage.getItem('rt');
+    $scope.rw = window.localStorage.getItem('rw');
+    $scope.pos = window.localStorage.getItem('pos');
+    $scope.propinsi = window.localStorage.getItem('propinsi');
+    $scope.kota = window.localStorage.getItem('kota');
+    $scope.ayah = window.localStorage.getItem('ayah');
+    $scope.ibu = window.localStorage.getItem('ibu');
+    $scope.hp = window.localStorage.getItem('hp');
+});
 
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        document.addEventListener("backbutton", function(e) {
-            navigator.app.exitApp();
-        }, false);
+
+module.controller('LoginCtrl', function($scope, $http) {
+    $scope.SignIn = function(user) {
+        $scope.hiddenAnimate = true;
+        $scope.loginState = false;
+
+        var postData = $.param(user);
+        var url = base_url + 'auth/login';
+        $http({
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            url: url,
+            data: postData,
+        }).
+        success(function(response) {
+            $scope.hiddenAnimate = false;
+            if (response.success === 1) {
+                $scope.contens = response.data;
+                $scope.login.$invalid = false;
+                var contens = response.data;
+                window.localStorage.setItem('is_logged', true);
+                window.localStorage.setItem('id', contens.id);
+                window.localStorage.setItem('name', contens.name);
+                window.localStorage.setItem('email', contens.email);
+                window.localStorage.setItem('foto', contens.foto);
+                window.localStorage.setItem('pob', contens.pob);
+                window.localStorage.setItem('dob', contens.dob);
+                window.localStorage.setItem('statusid', contens.statusid);
+                window.localStorage.setItem('status', contens.status);
+                window.localStorage.setItem('program', contens.program);
+                window.localStorage.setItem('prodi', contens.prodi);
+                window.localStorage.setItem('agama', contens.agama);
+                window.localStorage.setItem('angkatan', contens.angkatan);
+                window.localStorage.setItem('batasstudi', contens.batasstudi);
+                window.localStorage.setItem('pembimbing', contens.pembimbing);
+                window.localStorage.setItem('kelamin', contens.kelamin);
+                window.localStorage.setItem('phone', contens.phone);
+                window.localStorage.setItem('alamat', contens.alamat);
+                window.localStorage.setItem('rt', contens.rt);
+                window.localStorage.setItem('rw', contens.rw);
+                window.localStorage.setItem('pos', contens.pos);
+                window.localStorage.setItem('propinsi', contens.propinsi);
+                window.localStorage.setItem('kota', contens.kota);
+                window.localStorage.setItem('ayah', contens.ayah);
+                window.localStorage.setItem('ibu', contens.ibu);
+                window.localStorage.setItem('hp', contens.hp);
+                myNavigator.pushPage('start.html', {animation: 'slide'});
+
+            } else {
+                $scope.loginState = true;
+            }
+        }).
+        error(function() {
+            $scope.errorState = true;
+            $scope.hiddenAnimate = false;
+        });
+    };
+    if (window.localStorage.getItem('is_logged') === 'true') {
+        myNavigator.pushPage('start.html', {animation: 'slide'});
     }
+    $scope.hiddenError = false;
+});
 
-    module.filter('htmlToPlaintext', function() {
-        return function(text) {
-            return text ? String(text).replace(/<[^>]+>/gm, '') : '';
-        };
+module.controller('keuanganCtrl', function($scope, $http, $filter) {
+    angular.element(document).ready(function() {
+
+        if (window.localStorage.getItem('is_logged') === 'false') {
+            myNavigator.pushPage('login.html', {animation: 'slide'});
+        }
+        var postData = $.param({
+            MhswID : window.localStorage.getItem('id'),
+            tahun : window.localStorage.getItem('tahunKeuangan')
+        })
+        var url = base_url + 'bipot/detail';
+        $http({
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            url: url,
+            data:postData
+        }).
+        success(function(response) {
+            console.log(response);
+        });
+
     });
+});
+
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    document.addEventListener("backbutton", function(e) {
+        navigator.app.exitApp();
+    }, false);
+}
+
+module.filter('htmlToPlaintext', function() {
+    return function(text) {
+        return text ? String(text).replace(/<[^>]+>/gm, '') : '';
+    };
+});
 
     //Slide navigasi in profile Mahasiswa
-     app.controller('slide', function($scope, $http) {
+    app.controller('slide', function($scope, $http) {
 
         $('#btn_0').addClass('activebtn');
         setTimeout(function(){
@@ -232,5 +236,5 @@
         };
     });
 
-})();
+ })();
 

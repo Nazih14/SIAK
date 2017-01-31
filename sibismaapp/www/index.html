@@ -369,7 +369,7 @@
                         Agama
                     </div>
                     <div class="location">
-                        <i class="ion-android-radio-button-on"></i> {{agama}}-Islam
+                        <i class="ion-android-radio-button-on"></i> {{agama}}
                     </div>
                 </ons-col>
                 <ons-col width="45px"></ons-col>
@@ -621,7 +621,7 @@
         <br><br><p></p>
 
         <div ng-repeat="item in contents">
-            <div class="card-3" onclick="myNavigator.pushPage('bipot.html', {animation: 'fade'})">
+            <div class="card-3" onclick="keuangan(item.TahunID)">
                 <ons-row>
                     <ons-col width="55px">
                         <img src="img/calendar.png" class="img">
@@ -648,8 +648,8 @@
 
 <!--halaman pilih keuangan -->
 
-<ons-template id="bipot.html">
-    <ons-page modifier="shop-details" ng-controller="bipotCtrl" style="background:#eee;">
+<ons-template id="keuangan.html">
+    <ons-page modifier="shop-details" ng-controller="keuanganCtrl" style="background:#eee;">
 
         <ons-toolbar style="background: #01166c; border: 1px solid #01166c;">
             <div class="left">

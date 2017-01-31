@@ -28,6 +28,10 @@ class Bipot_model extends CI_Model {
             $this->db->where('MhswID', $params['MhswID']);
         }
 
+        if (isset($params['TahunID'])) {
+            $this->db->where('TahunID', $params['TahunID']);
+        }
+
         if (isset($params['gTahun'])) {
             $this->db->group_by('TahunID', $params['gTahun']);
         }
