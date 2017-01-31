@@ -54,10 +54,25 @@ class User_model extends CI_Model {
             $this->db->order_by('MhswID', 'desc');
         }
 
-        $this->db->select('*');
+        // $this->db->select('*');
+
+        // $res = $this->db->get('mhsw');
+
+        $this->db->select('program.Nama as program_nama,
+                            dosen.Nama as dosen_nama,
+                            agama.Nama as agama_nama, 
+                            kelamin.Nama as kelamin_nama, 
+                            statussipil.Nama as statussipil_nama, 
+                            statusmhsw.Nama as status_mhsw'
+                            );
+        $this->db->join('program', 'mhsw.ProgramID = program.ProgramID', life);
+        $this->db->join('dosen', 'mhsw.PenasehatAkademik = dosen.Login');
+        $this->db->join('agama', 'mhsw.Agama = agama.Nama');
+        $this->db->join('kelamin', 'mhsw.Kelamin = kelamin.Nama');
+        $this->db->join('statussipil', 'mhsw.StatusSipil = statussipil.Nama');
+        $this->db->join('statusmhsw', 'mhsw.StatusMhswID = statusmhsw.Nama');
 
         $res = $this->db->get('mhsw');
-
         if (isset($params['id']) OR isset($params['login'])) {
             return $res->row_array();
         } else {
