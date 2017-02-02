@@ -54,20 +54,26 @@ class User_model extends CI_Model {
             $this->db->order_by('MhswID', 'desc');
         }
 
-        $this->db->select('*');
         $this->db->select('program.Nama as program_nama,
                             dosen.Nama as dosen_nama,
                             agama.Nama as agama_nama, 
                             kelamin.Nama as kelamin_nama, 
                             statussipil.Nama as statussipil_nama, 
-                            statusmhsw.Nama as status_mhsw'
+                            statusmhsw.Nama as status_mhsw,
+                            mhsw.Kota, mhsw.Propinsi, mhsw.Foto,
+                            mhsw.KodePos, mhsw.Login, mhsw.Email,
+                            mhsw.Alamat, mhsw.Nama, mhsw.Handphone, mhsw.MhswID,
+                            mhsw.TempatLahir, mhsw.TanggalLahir, mhsw.StatusMhswID,
+                            mhsw.ProgramID, mhsw.ProdiID, mhsw.TahunID, mhsw.BatasStudi,
+                            mhsw.RT, mhsw.RW, mhsw.StatusAwalID, mhsw.NamaIbu, mhsw.NamaAyah,
+                            mhsw.HandphoneOrtu'
                             );
         $this->db->join('program', 'mhsw.ProgramID = program.ProgramID', 'left');
-        $this->db->join('dosen', 'mhsw.PenasehatAkademik = dosen.Login', 'left');
         $this->db->join('agama', 'mhsw.Agama = agama.Agama', 'left');
         $this->db->join('kelamin', 'mhsw.Kelamin = kelamin.Kelamin', 'left');
         $this->db->join('statussipil', 'mhsw.StatusSipil = statussipil.StatusSipil', 'left');
         $this->db->join('statusmhsw', 'mhsw.StatusMhswID = statusmhsw.StatusMhswID', 'left');
+        $this->db->join('dosen', 'mhsw.PenasehatAkademik = dosen.Login', 'left');
 
         $res = $this->db->get('mhsw');
         if (isset($params['id']) OR isset($params['login'])) {

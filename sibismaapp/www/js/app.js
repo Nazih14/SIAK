@@ -193,6 +193,7 @@ module.controller('keuanganCtrl', function($scope, $http, $filter) {
         if (window.localStorage.getItem('is_logged') === 'false') {
             myNavigator.pushPage('login.html', {animation: 'slide'});
         }
+        // Json bipot
         $scope.bipot = [];
         var postData = $.param({
             MhswID : window.localStorage.getItem('id'),
@@ -207,6 +208,19 @@ module.controller('keuanganCtrl', function($scope, $http, $filter) {
         }).
         success(function(response) {
             $scope.bipot = response.data;
+        });
+
+        // Json Pembayaran
+        $scope.bayar = [];
+        var urlBayar = base_url + 'pembayaran/detail';
+        $http({
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            url: urlBayar,
+            data:postData
+        }).
+        success(function(response) {
+            $scope.bayar = response.data;
         });
 
     });

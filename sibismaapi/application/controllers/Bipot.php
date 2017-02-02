@@ -15,7 +15,6 @@ class Bipot extends CI_Controller {
     }
 
     public function detail() {
-        $this->load->library('form_validation');
         $params['success'] = 0;
         $ret = $this->Bipot_model->get(array('MhswID' => $this->input->post('MhswID'), 'TahunID' =>  $this->input->post('tahun')));
 

@@ -11,7 +11,7 @@ if (!defined('BASEPATH'))
  * @category    Models
  * @author      bopas
  */
-class User_model extends CI_Model {
+class Pembayaran_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -26,6 +26,10 @@ class User_model extends CI_Model {
 
         if (isset($params['MhswID'])) {
             $this->db->where('MhswID', $params['MhswID']);
+        }
+
+        if (isset($params['TahunID'])) {
+            $this->db->where('TahunID', $params['TahunID']);
         }
 
         if (isset($params['limit'])) {
@@ -45,6 +49,7 @@ class User_model extends CI_Model {
         $this->db->select('BayarMhswID,
                              TahunID,
                              MhswID, 
+                             RekeningID, 
                              Bank, 
                              BuktiSetoran,
                              Tanggal,

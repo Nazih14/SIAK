@@ -58,6 +58,7 @@ class Auth extends CI_Controller {
                 );
 
                 $params['success'] = 1;
+                $params['message'] = '';
                 $params['data'] = $arr_res;
             } else {
                 $params['message'] = 'Username or password incorrect';
