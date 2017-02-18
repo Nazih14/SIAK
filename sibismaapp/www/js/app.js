@@ -2,7 +2,7 @@
 
     'use strict';
     var module = angular.module('app', ['onsen', 'ngSanitize']);
-    var base_url = 'http://localhost/SIAK/sibismaapi/';
+    var base_url = 'http://sibismaapi.rumahcg.com/';
 
     module.controller('homeCtrl', function($scope, $http) {
         angular.element(document).ready(function() {
@@ -113,6 +113,7 @@ module.controller('LoginCtrl', function($scope, $http) {
             $scope.hiddenAnimate = false;
             if (response.success === 1) {
                 $scope.contens = response.data;
+                // console.log(response.data);
                 $scope.login.$invalid = false;
                 var contens = response.data;
                 window.localStorage.setItem('is_logged', true);
@@ -176,6 +177,7 @@ module.controller('tahunCtrl', function($scope, $http, $filter) {
         }).
         success(function(response) {
             $scope.contents = response.data;
+            // console.log(response.data);
         });
         $scope.keuangan = function(tahun) {
             window.localStorage.removeItem('tahunKeuangan');
